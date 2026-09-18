@@ -1,0 +1,52 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*.egg-info/
+
+# Environments
+.env
+.venv/
+venv/
+
+# Paper build artifacts
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/*.bbl
+paper/*.blg
+paper/compile*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Large runtime artifacts (regenerable)
+*.pt
+*.pth
+*.ckpt
+
+# Paper text extracts / scratch
+paper/_*.txt
+
+# Submission package (goes to the journal system, not the repo)
+submission/
+
+# Internal editorial docs (reviews, responses, cover letters, template)
+paper/review*.md
+paper/response_to_reviewers*.md
+paper/cover_letter*.md
+paper/sage_template/
+paper/*.bak*
+
+# Scratch / backups
+_v081.txt
+*.bak*
+paper/*.pdf
+paper/_*.py
+
+# Smoke-test / broken intermediate results
+results/*_smoke.csv
+results/_e4b_broken.bak.csv

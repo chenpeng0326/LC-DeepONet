@@ -1,0 +1,2 @@
+L_target,seed_design,epochs,L_cert,eps_L_hat,plant_bound,k_c_safe,M_margin,L_G_true_lower_bound,covered,n_pairs_epsL,sweep_delay_steps,sweep_d_amp
+2.0,,100,2.1211420027653793,0.02559872530400753,2.146740728069387,0.4192401943244402,0.09999999999999998,0.5204960703849792,True,256,100,0.05

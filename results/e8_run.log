@@ -1,0 +1,39 @@
+  duffing  LC-DeepONet  seed=42 ID=0.0111 OOD=0.0146
+  duffing  LC-DeepONet  seed=43 ID=0.0098 OOD=0.0120
+  duffing  LC-DeepONet  seed=44 ID=0.0104 OOD=0.0126
+  duffing  LC-DeepONet  seed=45 ID=0.0118 OOD=0.0134
+  duffing  LC-DeepONet  seed=46 ID=0.0119 OOD=0.0133
+  duffing  DeepONet     seed=42 ID=0.0115 OOD=0.0135
+  duffing  DeepONet     seed=43 ID=0.0119 OOD=0.0137
+  duffing  DeepONet     seed=44 ID=0.0124 OOD=0.0149
+  duffing  DeepONet     seed=45 ID=0.0126 OOD=0.0136
+  duffing  DeepONet     seed=46 ID=0.0173 OOD=0.0208
+  duffing  FNO          seed=42 ID=0.0336 OOD=0.0429
+  duffing  FNO          seed=43 ID=0.0314 OOD=0.0489
+  duffing  FNO          seed=44 ID=0.0321 OOD=0.0459
+  duffing  FNO          seed=45 ID=0.0324 OOD=0.0454
+  duffing  FNO          seed=46 ID=0.0325 OOD=0.0428
+  pendulum LC-DeepONet  seed=42 ID=0.0142 OOD=0.0241
+  pendulum LC-DeepONet  seed=43 ID=0.0142 OOD=0.0261
+  pendulum LC-DeepONet  seed=44 ID=0.0132 OOD=0.0238
+  pendulum LC-DeepONet  seed=45 ID=0.0126 OOD=0.0243
+  pendulum LC-DeepONet  seed=46 ID=0.0126 OOD=0.0255
+  pendulum DeepONet     seed=42 ID=0.0144 OOD=0.0234
+  pendulum DeepONet     seed=43 ID=0.0133 OOD=0.0249
+  pendulum DeepONet     seed=44 ID=0.0135 OOD=0.0242
+  pendulum DeepONet     seed=45 ID=0.0126 OOD=0.0244
+  pendulum DeepONet     seed=46 ID=0.0128 OOD=0.0240
+  pendulum FNO          seed=42 ID=0.0182 OOD=0.0243
+  pendulum FNO          seed=43 ID=0.0188 OOD=0.0243
+  pendulum FNO          seed=44 ID=0.0181 OOD=0.0241
+  pendulum FNO          seed=45 ID=0.0186 OOD=0.0246
+  pendulum FNO          seed=46 ID=0.0181 OOD=0.0255
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e8_transfer_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e8_transfer.csv
+  system       model  ID_mean   ID_std  OOD_mean  OOD_std  L_cert_mean  L_cert_std  n
+ duffing    DeepONet 0.013150 0.002376  0.015304 0.003119          NaN         NaN  5
+ duffing         FNO 0.032393 0.000805  0.045165 0.002507          NaN         NaN  5
+ duffing LC-DeepONet 0.011009 0.000900  0.013171 0.000979     4.122684    0.354083  5
+pendulum    DeepONet 0.013326 0.000729  0.024190 0.000529          NaN         NaN  5
+pendulum         FNO 0.018368 0.000304  0.024554 0.000588          NaN         NaN  5
+pendulum LC-DeepONet 0.013339 0.000806  0.024766 0.000947     3.367484    0.081386  5

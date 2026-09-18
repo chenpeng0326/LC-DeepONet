@@ -1,0 +1,27 @@
+  A (bare DeepONet)  seed=42 ID=0.0114 OOD=0.0143
+  A (bare DeepONet)  seed=43 ID=0.0109 OOD=0.0136
+  A (bare DeepONet)  seed=44 ID=0.0127 OOD=0.0139
+  A (bare DeepONet)  seed=45 ID=0.0123 OOD=0.0131
+  A (bare DeepONet)  seed=46 ID=0.0119 OOD=0.0134
+  B (+Lip)           seed=42 ID=0.0116 OOD=0.0134
+  B (+Lip)           seed=43 ID=0.0159 OOD=0.0161
+  B (+Lip)           seed=44 ID=0.0130 OOD=0.0144
+  B (+Lip)           seed=45 ID=0.0113 OOD=0.0122
+  B (+Lip)           seed=46 ID=0.0165 OOD=0.0180
+  C (+Dyn)           seed=42 ID=0.0110 OOD=0.0129
+  C (+Dyn)           seed=43 ID=0.0114 OOD=0.0123
+  C (+Dyn)           seed=44 ID=0.0202 OOD=0.0213
+  C (+Dyn)           seed=45 ID=0.0106 OOD=0.0115
+  C (+Dyn)           seed=46 ID=0.0104 OOD=0.0119
+  D (full LC)        seed=42 ID=0.0123 OOD=0.0146
+  D (full LC)        seed=43 ID=0.0115 OOD=0.0132
+  D (full LC)        seed=44 ID=0.0105 OOD=0.0122
+  D (full LC)        seed=45 ID=0.0117 OOD=0.0121
+  D (full LC)        seed=46 ID=0.0121 OOD=0.0126
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e5b_ablation_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e5b_ablation_5seed.csv
+           config  ID_mean   ID_std  OOD_mean  OOD_std  S_emp_mean  S_emp_std  L_cert_mean  L_cert_std  n
+A (bare DeepONet) 0.011843 0.000703  0.013678 0.000458    0.264874   0.013833          NaN         NaN  5
+         B (+Lip) 0.013648 0.002410  0.014795 0.002309    0.280014   0.029780     4.055959    0.368072  5
+         C (+Dyn) 0.012706 0.004205  0.014005 0.004134    0.267535   0.025600          NaN         NaN  5
+      D (full LC) 0.011599 0.000706  0.012937 0.001009    0.273694   0.027776     4.026747    0.308208  5

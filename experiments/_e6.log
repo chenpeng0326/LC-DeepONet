@@ -1,0 +1,21 @@
+
+L_cert=3.678 eps_L=0.056 L_G_true=0.520
+S_emp(DeepONet)=0.254
+k_c_safe(LC)=0.241  k_c_opt(DeepONet)=3.541
+覆盖检验: L_cert+eps_L vs L_G_true -> 安全
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6_closedloop.csv
+  mult       k_c  M_margin  track_err_L2  overshoot  diverged                design
+  0.25  0.060245     0.775      0.980262   1.000124     False LC-certificate x mult
+  0.50  0.120489     0.550      0.960763   1.000248     False LC-certificate x mult
+  1.00  0.240978     0.100      0.922500   1.000496     False LC-certificate x mult
+  2.00  0.481957    -0.800      0.849027   1.000990     False LC-certificate x mult
+  4.00  0.963913    -2.600      0.715165   1.001977     False LC-certificate x mult
+  8.00  1.927827    -6.200      0.506725   1.003941     False LC-certificate x mult
+ 16.00  3.855654   -13.400      0.360083   1.317920     False LC-certificate x mult
+ 32.00  7.711308   -27.800      0.507251   1.015437     False LC-certificate x mult
+ 64.00 15.422616   -56.600      1.134796   2.401821     False LC-certificate x mult
+128.00 30.845232  -114.200      2.899745   5.113538     False LC-certificate x mult
+   NaN  3.541058     0.100      0.361524   1.292086     False DeepONet S_emp design
+
+[E6 摘要] M>0 区间: 3 个点, 发散 0 个 | M<0 区间: 7 个点, 发散 0 个
+（预期：M>0 时闭环稳定，M<0 后稳定性失去理论保证，可能出现大振荡/发散——二者相关性是论文核心图 Fig.8/9 的素材）

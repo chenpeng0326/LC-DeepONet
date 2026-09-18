@@ -1,0 +1,27 @@
+  lam=0.0   seed=42 ID=0.0114 OOD=0.0143 RMSE4s=0.1016
+  lam=0.0   seed=43 ID=0.0109 OOD=0.0123 RMSE4s=0.1019
+  lam=0.0   seed=44 ID=0.0195 OOD=0.0221 RMSE4s=0.1041
+  lam=0.0   seed=45 ID=0.0124 OOD=0.0132 RMSE4s=0.1027
+  lam=0.0   seed=46 ID=0.0106 OOD=0.0122 RMSE4s=0.1026
+  lam=0.01  seed=42 ID=0.0111 OOD=0.0124 RMSE4s=0.1023
+  lam=0.01  seed=43 ID=0.0114 OOD=0.0124 RMSE4s=0.1019
+  lam=0.01  seed=44 ID=0.0113 OOD=0.0124 RMSE4s=0.1025
+  lam=0.01  seed=45 ID=0.0134 OOD=0.0143 RMSE4s=0.1035
+  lam=0.01  seed=46 ID=0.0125 OOD=0.0131 RMSE4s=0.1025
+  lam=0.1   seed=42 ID=0.0144 OOD=0.0150 RMSE4s=0.1022
+  lam=0.1   seed=43 ID=0.0125 OOD=0.0135 RMSE4s=0.1024
+  lam=0.1   seed=44 ID=0.0104 OOD=0.0132 RMSE4s=0.1019
+  lam=0.1   seed=45 ID=0.0105 OOD=0.0124 RMSE4s=0.1029
+  lam=0.1   seed=46 ID=0.0119 OOD=0.0133 RMSE4s=0.1022
+  lam=1.0   seed=42 ID=0.0111 OOD=0.0120 RMSE4s=0.1015
+  lam=1.0   seed=43 ID=0.0106 OOD=0.0126 RMSE4s=0.1017
+  lam=1.0   seed=44 ID=0.0118 OOD=0.0144 RMSE4s=0.1024
+  lam=1.0   seed=45 ID=0.0167 OOD=0.0168 RMSE4s=0.1032
+  lam=1.0   seed=46 ID=0.0131 OOD=0.0131 RMSE4s=0.1026
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e7c_lamdyn_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e7c_lamdyn.csv
+ lambda_dyn  ID_mean   ID_std  OOD_mean  OOD_std  RMSE4s_mean  RMSE4s_std  L_cert_mean  n
+       0.00 0.012975 0.003713  0.014814 0.004142     0.102600    0.000972     4.098378  5
+       0.01 0.011943 0.000958  0.012914 0.000862     0.102533    0.000591     4.175653  5
+       0.10 0.011947 0.001652  0.013477 0.000959     0.102318    0.000357     4.200834  5
+       1.00 0.012667 0.002442  0.013767 0.001884     0.102293    0.000698     3.714845  5

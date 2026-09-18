@@ -1,0 +1,5 @@
+[lam] lambda_lip=0.01: ID=0.0144 OOD=0.0143 L_cert=3.678
+[lam] lambda_lip=0.1: ID=0.0144 OOD=0.0143 L_cert=3.678
+[lam] lambda_lip=1.0: ID=0.0144 OOD=0.0143 L_cert=3.678
+[lam] lambda_lip=10.0: ID=0.0144 OOD=0.0143 L_cert=3.678
+saved C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e7_lam_sensitivity.csv

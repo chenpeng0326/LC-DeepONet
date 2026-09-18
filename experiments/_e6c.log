@@ -1,0 +1,78 @@
+  seed=42 corner(0.4,0.8,0.5)    L_cert=3.678 eps_L=0.1238 bound=3.802 L_G_true=0.587 OK
+  seed=42 corner(0.4,0.8,1.2)    L_cert=3.678 eps_L=0.1095 bound=3.788 L_G_true=0.581 OK
+  seed=42 corner(0.4,1.2,0.5)    L_cert=3.678 eps_L=0.0700 bound=3.748 L_G_true=0.544 OK
+  seed=42 corner(0.4,1.2,1.2)    L_cert=3.678 eps_L=0.0660 bound=3.744 L_G_true=0.539 OK
+  seed=42 corner(0.8,0.8,0.5)    L_cert=3.678 eps_L=0.0418 bound=3.720 L_G_true=0.497 OK
+  seed=42 corner(0.8,0.8,1.2)    L_cert=3.678 eps_L=0.0417 bound=3.720 L_G_true=0.494 OK
+  seed=42 corner(0.8,1.2,0.5)    L_cert=3.678 eps_L=0.0797 bound=3.758 L_G_true=0.463 OK
+  seed=42 corner(0.8,1.2,1.2)    L_cert=3.678 eps_L=0.0822 bound=3.761 L_G_true=0.460 OK
+  seed=42 mid                    L_cert=3.678 eps_L=0.0501 bound=3.729 L_G_true=0.517 OK
+  seed=43 corner(0.4,0.8,0.5)    L_cert=3.743 eps_L=0.0982 bound=3.841 L_G_true=0.587 OK
+  seed=43 corner(0.4,0.8,1.2)    L_cert=3.743 eps_L=0.0909 bound=3.834 L_G_true=0.581 OK
+  seed=43 corner(0.4,1.2,0.5)    L_cert=3.743 eps_L=0.0400 bound=3.783 L_G_true=0.544 OK
+  seed=43 corner(0.4,1.2,1.2)    L_cert=3.743 eps_L=0.0355 bound=3.778 L_G_true=0.539 OK
+  seed=43 corner(0.8,0.8,0.5)    L_cert=3.743 eps_L=0.0432 bound=3.786 L_G_true=0.497 OK
+  seed=43 corner(0.8,0.8,1.2)    L_cert=3.743 eps_L=0.0465 bound=3.789 L_G_true=0.494 OK
+  seed=43 corner(0.8,1.2,0.5)    L_cert=3.743 eps_L=0.0807 bound=3.823 L_G_true=0.463 OK
+  seed=43 corner(0.8,1.2,1.2)    L_cert=3.743 eps_L=0.0844 bound=3.827 L_G_true=0.460 OK
+  seed=43 mid                    L_cert=3.743 eps_L=0.0298 bound=3.772 L_G_true=0.517 OK
+  seed=44 corner(0.4,0.8,0.5)    L_cert=3.963 eps_L=0.1033 bound=4.067 L_G_true=0.587 OK
+  seed=44 corner(0.4,0.8,1.2)    L_cert=3.963 eps_L=0.0927 bound=4.056 L_G_true=0.581 OK
+  seed=44 corner(0.4,1.2,0.5)    L_cert=3.963 eps_L=0.0406 bound=4.004 L_G_true=0.544 OK
+  seed=44 corner(0.4,1.2,1.2)    L_cert=3.963 eps_L=0.0376 bound=4.001 L_G_true=0.539 OK
+  seed=44 corner(0.8,0.8,0.5)    L_cert=3.963 eps_L=0.0369 bound=4.000 L_G_true=0.497 OK
+  seed=44 corner(0.8,0.8,1.2)    L_cert=3.963 eps_L=0.0377 bound=4.001 L_G_true=0.494 OK
+  seed=44 corner(0.8,1.2,0.5)    L_cert=3.963 eps_L=0.0760 bound=4.039 L_G_true=0.463 OK
+  seed=44 corner(0.8,1.2,1.2)    L_cert=3.963 eps_L=0.0785 bound=4.042 L_G_true=0.460 OK
+  seed=44 mid                    L_cert=3.963 eps_L=0.0294 bound=3.993 L_G_true=0.517 OK
+  seed=45 corner(0.4,0.8,0.5)    L_cert=3.912 eps_L=0.1026 bound=4.014 L_G_true=0.587 OK
+  seed=45 corner(0.4,0.8,1.2)    L_cert=3.912 eps_L=0.0984 bound=4.010 L_G_true=0.581 OK
+  seed=45 corner(0.4,1.2,0.5)    L_cert=3.912 eps_L=0.0533 bound=3.965 L_G_true=0.544 OK
+  seed=45 corner(0.4,1.2,1.2)    L_cert=3.912 eps_L=0.0502 bound=3.962 L_G_true=0.539 OK
+  seed=45 corner(0.8,0.8,0.5)    L_cert=3.912 eps_L=0.0386 bound=3.950 L_G_true=0.497 OK
+  seed=45 corner(0.8,0.8,1.2)    L_cert=3.912 eps_L=0.0414 bound=3.953 L_G_true=0.494 OK
+  seed=45 corner(0.8,1.2,0.5)    L_cert=3.912 eps_L=0.0805 bound=3.992 L_G_true=0.463 OK
+  seed=45 corner(0.8,1.2,1.2)    L_cert=3.912 eps_L=0.0830 bound=3.995 L_G_true=0.460 OK
+  seed=45 mid                    L_cert=3.912 eps_L=0.0399 bound=3.952 L_G_true=0.517 OK
+  seed=46 corner(0.4,0.8,0.5)    L_cert=4.330 eps_L=0.0948 bound=4.425 L_G_true=0.587 OK
+  seed=46 corner(0.4,0.8,1.2)    L_cert=4.330 eps_L=0.0801 bound=4.410 L_G_true=0.581 OK
+  seed=46 corner(0.4,1.2,0.5)    L_cert=4.330 eps_L=0.0367 bound=4.367 L_G_true=0.544 OK
+  seed=46 corner(0.4,1.2,1.2)    L_cert=4.330 eps_L=0.0364 bound=4.367 L_G_true=0.539 OK
+  seed=46 corner(0.8,0.8,0.5)    L_cert=4.330 eps_L=0.0632 bound=4.393 L_G_true=0.497 OK
+  seed=46 corner(0.8,0.8,1.2)    L_cert=4.330 eps_L=0.0660 bound=4.396 L_G_true=0.494 OK
+  seed=46 corner(0.8,1.2,0.5)    L_cert=4.330 eps_L=0.1043 bound=4.434 L_G_true=0.463 OK
+  seed=46 corner(0.8,1.2,1.2)    L_cert=4.330 eps_L=0.1068 bound=4.437 L_G_true=0.460 OK
+  seed=46 mid                    L_cert=4.330 eps_L=0.0439 bound=4.374 L_G_true=0.517 OK
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6c_corners.csv
+
+[E6-C 汇总]
+              point  eps_L_mean  eps_L_max  L_G_true_max  bound_mean  covers
+corner(0.4,0.8,0.5)    0.104547   0.123849      0.587215    4.029813    True
+corner(0.4,0.8,1.2)    0.094330   0.109533      0.580927    4.019596    True
+corner(0.4,1.2,0.5)    0.048124   0.070015      0.543914    3.973390    True
+corner(0.4,1.2,1.2)    0.045157   0.066043      0.538913    3.970423    True
+corner(0.8,0.8,0.5)    0.044744   0.063197      0.497341    3.970010    True
+corner(0.8,0.8,1.2)    0.046646   0.065953      0.493705    3.971912    True
+corner(0.8,1.2,0.5)    0.084243   0.104323      0.462859    4.009509    True
+corner(0.8,1.2,1.2)    0.086975   0.106796      0.459934    4.012241    True
+                mid    0.038614   0.050113      0.517408    3.963880    True
+
+L_cert(mean over 5 seeds) = 3.925
+eps_L: mid=0.0386  worst-case over box=0.1238 (3.21x mid)
+L_G_true: max over box = 0.587
+k_c: mid-calibrated=0.2271  box-worst-calibrated=0.2223 (ratio 0.979)
+Coverage: mid bound 3.964 >= box max true gain 0.587 -> YES
+
+[E6-C 闭环跟踪误差 L2（d_amp=0.05, 100ms 延迟）]
+              point  box-worst-calibrated  mid-calibrated
+corner(0.4,0.8,0.5)              0.922537        0.920915
+corner(0.4,0.8,1.2)              0.922556        0.920934
+corner(0.4,1.2,0.5)              0.925308        0.923742
+corner(0.4,1.2,1.2)              0.925325        0.923759
+corner(0.8,0.8,0.5)              0.931203        0.929757
+corner(0.8,0.8,1.2)              0.931215        0.929770
+corner(0.8,1.2,0.5)              0.933566        0.932169
+corner(0.8,1.2,1.2)              0.933578        0.932181
+                mid              0.928377        0.926874
+
+[E6-C 摘要] 盒心设计与箱内最坏设计在各参数点的闭环跟踪误差如上；发散点数: 0

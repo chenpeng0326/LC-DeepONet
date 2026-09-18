@@ -1,0 +1,57 @@
+[E10] L_target=2.0 (binding), epochs=100, seeds=[42, 43, 44, 45, 46]
+  [A] seed=42: ID=0.0105 OOD=0.0133 L_cert=2.121
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_msd_per_seed.csv
+  [A] seed=43: ID=0.0134 OOD=0.0167 L_cert=1.993
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_msd_per_seed.csv
+  [A] seed=44: ID=0.0114 OOD=0.0145 L_cert=1.741
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_msd_per_seed.csv
+  [A] seed=45: ID=0.0141 OOD=0.0167 L_cert=1.966
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_msd_per_seed.csv
+  [A] seed=46: ID=0.0122 OOD=0.0149 L_cert=2.006
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_msd_per_seed.csv
+[A] summary:        ID_RMSE  OOD_RMSE    L_cert
+mean  0.012325  0.015225  1.965370
+std   0.001454  0.001457  0.138648
+
+[B] binding L_cert=2.121 eps_L=0.026 L_G_true=0.520 k_c_safe=0.419 | coverage: SAFE
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_closedloop.csv
+  mult       k_c  M_margin  track_err_L2  overshoot  diverged                        design
+  0.25  0.104810     0.775      0.966263   1.000216     False LC-binding-certificate x mult
+  0.50  0.209620     0.550      0.932759   1.000431     False LC-binding-certificate x mult
+  1.00  0.419240     0.100      0.868029   1.000862     False LC-binding-certificate x mult
+  2.00  0.838480    -0.800      0.748266   1.001721     False LC-binding-certificate x mult
+  4.00  1.676961    -2.600      0.552082   1.003431     False LC-binding-certificate x mult
+  8.00  3.353922    -6.200      0.363636   1.006821     False LC-binding-certificate x mult
+ 16.00  6.707843   -13.400      0.464421   1.013477     False LC-binding-certificate x mult
+ 32.00 13.415686   -27.800      0.894320   1.764426     False LC-binding-certificate x mult
+ 64.00 26.831372   -56.600      2.630171   4.537016     False LC-binding-certificate x mult
+128.00 53.662745  -114.200      5.809719  11.906185     False LC-binding-certificate x mult
+
+[B summary] M>0: 3 pts, diverged 0 | M<0: 7 pts, diverged 0
+  [C] duffing  seed=42 ID=0.0111 OOD=0.0142 L_cert=1.757
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] duffing  seed=43 ID=0.0112 OOD=0.0144 L_cert=1.962
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] duffing  seed=44 ID=0.0117 OOD=0.0142 L_cert=2.117
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] duffing  seed=45 ID=0.0130 OOD=0.0159 L_cert=1.906
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] duffing  seed=46 ID=0.0123 OOD=0.0155 L_cert=2.121
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] pendulum seed=42 ID=0.0127 OOD=0.0237 L_cert=1.919
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] pendulum seed=43 ID=0.0139 OOD=0.0246 L_cert=1.840
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] pendulum seed=44 ID=0.0120 OOD=0.0247 L_cert=2.121
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] pendulum seed=45 ID=0.0313 OOD=0.0328 L_cert=1.265
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+  [C] pendulum seed=46 ID=0.0137 OOD=0.0243 L_cert=1.373
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e10_lt2_transfer.csv
+[C] aggregated:
+ L_target   system  ID_mean   ID_std  OOD_mean  OOD_std  L_cert_mean  L_cert_std  n
+      2.0  duffing 0.011848 0.000802  0.014867 0.000804     1.972726    0.153390  5
+      2.0 pendulum 0.016709 0.008170  0.026011 0.003818     1.703599    0.367812  5
+
+[E10] done.

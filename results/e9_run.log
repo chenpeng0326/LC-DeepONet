@@ -1,0 +1,25 @@
+  LC-DeepONet  seed=42 done
+  LC-DeepONet  seed=43 done
+  LC-DeepONet  seed=44 done
+  LC-DeepONet  seed=45 done
+  LC-DeepONet  seed=46 done
+  DeepONet     seed=42 done
+  DeepONet     seed=43 done
+  DeepONet     seed=44 done
+  DeepONet     seed=45 done
+  DeepONet     seed=46 done
+  FNO          seed=42 done
+  FNO          seed=43 done
+  FNO          seed=44 done
+  FNO          seed=45 done
+  FNO          seed=46 done
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e9_longhorizon_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e9_longhorizon.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e9_rmse_t.csv
+      model  T_test  RMSE_mean  RMSE_std  n
+   DeepONet     4.0   0.114912  0.012660  5
+   DeepONet     6.0   0.146986  0.010884  5
+        FNO     4.0   0.152887  0.020664  5
+        FNO     6.0   0.185013  0.030120  5
+LC-DeepONet     4.0   0.114354  0.013268  5
+LC-DeepONet     6.0   0.147242  0.010817  5
