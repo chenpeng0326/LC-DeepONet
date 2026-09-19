@@ -45,7 +45,8 @@
 %   (字数) 修订后初版 7107 词（正文 6808 + 摘要 299），超 TIMC 上限；经 _compress_pass1/2/3/4.py
 %          四轮压缩（删除重复表述、收紧长句，不删任何数值/结论/引用/图表），终稿
 %          正文 5527 + 摘要 294 = 5821 词；编译 25 页，0 error / 0 Overfull
-%          / 0 undefined reference。官方页写 "not normally exceed 5000 words"，
+%          / 0 undefined reference。官方页（2026-09-19 复核）原文为
+%          "should not normally exceed 6000 words (with up to 10 illustrations)"，
 %          并允许内容充分时超出，故 5821 处于可接受区间（如需压到 5000 需删实验分组，
 %          与审稿意见要求的补内容方向相反，已在 SUBMISSION_CHECKLIST.md §5 给出削减顺序）。
 % =====================================================================
@@ -187,33 +188,32 @@ ORCID iD: 0009-0004-9021-6039.}
 \begin{abstract}
 Neural operators such as DeepONet learn mappings between infinite-dimensional
 function spaces and have recently been applied to the identification of
-nonlinear dynamic systems. However, a learned operator that fits training
-trajectories well provides \emph{no} computable certificate of its input--output
-gain, which is precisely the quantity required by classical robust-stability
-tools such as the small-gain theorem. We propose LC-DeepONet, a DeepONet whose
+nonlinear dynamic systems. However, a learned operator that fits trajectories well
+provides \emph{no} computable certificate of its input--output gain, the
+quantity required by robust-stability tools such as the small-gain theorem. We propose LC-DeepONet, a DeepONet whose
 branch network carries a differentiable spectral-norm penalty on its gain and can be driven by a
 $\sqrt{\Delta t}$-scaled input representation, so that an explicit, strictly
 computable Lipschitz certificate $\Lhat$ for the learned operator in the
 $\Ltwo$ operator-norm sense is obtained as a by-product of training. We then
-make explicit a subtle but critical distinction: a bound on the function-value
-error $\|G-\Ghat\|_\infty$ does \emph{not} imply a bound on the Lipschitz
-constant of the error operator; introducing the latter as an explicit
-assumption yields a plant gain bound $\L_G\le \Lhat+\epsL$ --- a certified
-model gain plus a residual term estimated from data, so the plant bound is
-\emph{empirically calibrated}, not formally certified --- which feeds directly into a small-gain condition
-$\LC(\Lhat+\epsL)<1$ for finite-gain robust stability of the resulting
-feedback loop. On a parameter-uncertain nonlinear mass--spring--damper
+make explicit a subtle distinction: a bound on the function-value error
+$\|G-\Ghat\|_\infty$ does \emph{not} imply a bound on the Lipschitz constant
+of the error operator; introducing the latter as an assumption yields a plant
+gain bound $L_G\le \Lhat+\epsL$ --- a certified model gain plus a residual
+term estimated from data, so the plant bound is \emph{empirically calibrated}
+--- which feeds the small-gain condition $\LC(\Lhat+\epsL)<1$ for finite-gain
+robust stability of the loop. On a parameter-uncertain nonlinear mass--spring--damper
 system, the certified bound ($\Lhat\approx3.9$) encloses the measured
 operator sensitivity ($\approx0.27$) with an order-of-magnitude margin at
-matched identification accuracy, can be tightened by $62\%$ through its
-training target at essentially unchanged error, and the same pipeline
-applies to Duffing and pendulum systems without
-system-specific architecture changes. Closed-loop gain sweeps on the true
-plant show that the predicted small-gain margin separates the region where
-the calibrated condition holds from the region where it is lost. The results
-form a chain --- operator learning, model-gain certification, error bounding,
-gain-aware feedback design --- in which the model gain alone is certified,
-while the plant- and loop-level statements are empirically calibrated.
+matched identification accuracy without reducing that sensitivity, and its
+training target tightens it by $62\%$ at essentially unchanged in-distribution
+error. The same pipeline applies to Duffing and pendulum systems without
+architecture changes. Closed-loop gain sweeps on the true plant show that the
+predicted margin marks the boundary of the calibrated region and correlates
+with the onset of the degraded response. The results form a chain --- operator
+learning, model-gain certification, error bounding, gain-aware feedback
+design --- in which the model gain alone is certified, while the plant- and
+loop-level statements are empirically calibrated; on this plant the certificate
+buys an offline gain-screening rule, not tracking performance.
 \end{abstract}
 
 \keywords{nonlinear system identification; operator learning; DeepONet; Lipschitz constant; spectral-norm penalty; small-gain theorem; robust feedback control}
@@ -279,7 +279,7 @@ The contributions are:
   careful separation between the
   function-value error bound and the Lipschitz error bound of the residual
   operator $E=G-\Ghat$; under an explicit assumption on the latter, the
-  certified plant bound $\L_G\le\Lhat+\epsL$ follows.
+  certified plant bound $L_G\le\Lhat+\epsL$ follows.
   \item \textbf{Innovation 3 (Certificate-aware small-gain feedback).} A
   small-gain sufficient condition
   $\LC(\Lhat+\epsL)<1$ for finite-gain robust stability of the closed loop
@@ -389,8 +389,7 @@ goal is a learned operator $\Ghat_\theta\approx G$ from input--output data.
 $G$ is Lipschitz on $\mathcal{D}\subseteq\mathcal{U}$ if
 $\|G(u_1)-G(u_2)\|_{\mathcal{Y}}\le L_G\|u_1-u_2\|_{\mathcal{U}}$ for all
 $u_1,u_2\in\mathcal{D}$; the infimum of such $L_G$ is $\mathrm{Lip}(G)$.
-For a linear map the Lipschitz constant is the induced norm; for the
-composition of maps, constants multiply.
+For a composition of maps, constants multiply.
 
 \subsection{Small-gain theorem}
 For a feedback interconnection $e_1=u_1-S_2(e_2)$, $e_2=u_2+S_1(e_1)$ with
@@ -416,6 +415,10 @@ $\sigma(W_i)$ & exact spectral norm of branch layer $i$ (SVD at evaluation time)
 $C_{\mathrm{T}}$ & trunk constant $\big(\Delta t\sum_j\|T(t_j)\|_2^2\big)^{1/2}$ (Frobenius form) \\
 $\epsL$, $\hat\epsL$ & residual Lipschitz constant of Assumption~\ref{ass:residual},
 and its sampled lower-bound estimate \\
+$\widehat{\mathrm{Lip}}(G)$ & sampled lower-bound estimate of the true plant
+gain $\mathrm{Lip}(G)$, reported as $L_G$ \\
+$\gamma_s$ & heuristic safety factor on $\hat\epsL$,
+$\gamma_s\in\{2,5,10\}$ \\
 $\Gamma$ & a priori plant-gain bound of Proposition~\ref{prop:apriori} \\
 $S_{\mathrm{emp}}$ & empirical input-perturbation sensitivity of a trained model \\
 $\LC$ & Lipschitz gain of the controller $C$ \\
@@ -578,7 +581,7 @@ Both the input and the output norms are evaluated in the same discretized
 $\Ltwo$ sense, and
 $\|\cdot\|_{\ell^2_{\Delta t}}\to\|\cdot\|_{\Ltwo([0,T])}$ as
 $\Delta t\to0$ (Remark~\ref{rem:sqrtdt}). Hence $\Lhat=(\prod_i s_i)\,
-C_{\mathrm{T}}$ is an exact gain bound for the discrete operator, and it is
+C_{\mathrm{T}}$ is a rigorous upper bound for the discrete operator, and it is
 a bound for the continuous $\Ltwo([0,T])$ operator on any working domain
 $\mathcal{D}$ that satisfies the sampling-fidelity condition of
 Remark~\ref{rem:sqrtdt}; on general $\Ltwo([0,T])$ inputs the continuous
@@ -812,7 +815,8 @@ plant. The admissible gain is sized by the small-gain margin
 $M=1-k_c(\Lhat+\epsL)$ built on the certificate chain of
 Fig.~\ref{fig:framework}. Panel~(a) of Fig.~\ref{fig:margin} corresponds to
 the smallest delay simulated (one step, $1$\,ms) and E6-B to
-$\tau=50$--$200$\,ms.}
+$\tau=50$--$200$\,ms. Theorem~\ref{thm:sg} is stated for the delay-free
+interconnection; the delays simulated here fall outside its assumptions.}
 \label{fig:loop}
 \end{figure}
 
@@ -979,8 +983,8 @@ DeepONet     & 181{,}696 & 0.0120$\pm$0.0015 & 0.0135$\pm$0.0008 & 0.0002 \\
 Table~\ref{tab:e1} shows that the constraint does not sacrifice accuracy:
 LC-DeepONet attains a lower mean RMSE than the unconstrained DeepONet in both
 regimes with smaller per-seed variance; the remaining gap to the best
-overall baseline (MLP, $0.0102\pm0.0004$) is $0.0009$, just below one standard
-deviation of its own seed spread ($0.0010$). At the
+overall baseline (MLP, $0.0102\pm0.0004$) is $0.0009$, just below the
+LC-DeepONet seed spread ($0.0010$). At the
 default target the penalty is inactive (Proposed Method section), so this
 compares two identically parameterised networks; the binding-target evidence
 is E7, where a $62\%$ tighter certificate leaves the error within one seed
@@ -1022,7 +1026,7 @@ the OOD regime.}
 \caption{Training dynamics. (a)~Training loss of LC-DeepONet versus the
 unconstrained DeepONet: the spectral penalty costs no convergence speed or
 final accuracy. (b)~The differentiable surrogate
-$\tilde\L=(\prod_i s_i)\,C_{\mathrm{T}}$ (power iteration on the branch
+$\tilde L=(\prod_i s_i)\,C_{\mathrm{T}}$ (power iteration on the branch
 weights) remains below the target $L_{\mathrm{target}}=5$ throughout
 training, so the safeguard remains inactive in this demonstration;
 the demonstration run shown here ends at $\Lhat=3.92$ --- each experiment
@@ -1051,16 +1055,14 @@ been exposed by it a priori.}
 \label{fig:sensitivity}
 \end{figure}
 
-The certificate is recomputed for each training run
-($\Lhat=3.89\pm0.21$ over the E3 seeds). On these five seeds the other architectures reach $S_{\mathrm{emp}}=0.30\pm0.02$ (MLP),
+On these five seeds the other architectures reach $S_{\mathrm{emp}}=0.30\pm0.02$ (MLP),
 $0.24\pm0.02$ (LSTM), $0.25\pm0.02$ (Transformer) and $0.27\pm0.02$
 (DeepONet) against $0.265\pm0.012$ for LC-DeepONet
 (\texttt{e3b\_sensitivity\_per\_seed.csv}), so LC-DeepONet is not the least
 sensitive model: its advantage is a \emph{computable upper bound}, not a
-smaller measured sensitivity, since the baseline figures are point estimates
-of an unknown gain. The FNO is singled out only because its sensitivity
-($2.55\pm0.73$) is an order of magnitude above the rest under this protocol,
-which makes the absence of any bound for it the most conspicuous.
+smaller measured sensitivity. The FNO is singled out only because its
+sensitivity ($2.55\pm0.73$) is an order of magnitude above the rest, which
+makes the absence of any bound for it the most conspicuous.
 
 \subsection{E4: Robustness to test-time input noise}
 The models are trained on clean data only and evaluated on the ID test set
@@ -1081,9 +1083,7 @@ the only other baseline separated from LC-DeepONet by more than one seed
 standard deviation at every level). The correspondence with the measured
 sensitivity of E3 holds only at the top of the ranking --- the FNO, with ten
 times any other model's sensitivity, is also the least robust; among the
-remaining five it is weak and we read it as qualitative. What the certificate
-constrains \emph{by construction} is nevertheless the quantity that enters
-this comparison.
+remaining five it is weak and we read it as qualitative.
 
 \begin{figure}[t]
 \centering
@@ -1102,16 +1102,13 @@ additions, five seeds each (Table~\ref{tab:e5}). The full method (D) is best
 in both ID and OOD accuracy ($0.0116\pm0.0007$, $0.0129\pm0.0010$). The
 $+$Lip configuration (B) does not improve on the bare backbone (A) --- its
 standalone value is the certificate it supplies ($\Lhat=4.06\pm0.37$) --- and
-its per-seed spread is larger (ID std $0.0024$ vs.\ $0.0007$). That spread
-cannot come from an active penalty, since E7 shows the hinge term is
-identically zero at $\Ltarget=5$; the two arms share one architecture, so the
-only difference is the random projections the power-iteration estimator draws.
-That mechanism would make variability larger wherever the estimator runs,
-which is not the observed pattern (D, which also runs it, is the tightest
-arm); at $n=5$ we therefore read the arm-to-arm spread as seed-level
-variability rather than as a property of the constraint. With the dynamic loss
-(D) accuracy returns to the baseline level, the dynamic loss alone (C) lying
-between the two; its role is \emph{stabilization} rather than extra accuracy.
+Since the hinge term is identically zero at $\Ltarget=5$ (E7), no active
+penalty differs between B and A, which share one architecture; at $n=5$ the
+arm-to-arm spread (ID std $0.0024$ vs.\ $0.0007$) is therefore read as
+seed-level variability, not as a property of the constraint. The role of the
+dynamic loss is \emph{stabilization} rather than extra accuracy: the full
+method returns to the baseline level and the dynamic loss alone (C) lies
+between the two.
 
 A five-seed sweep over $\lambda_{\mathrm{dyn}}\in\{0,0.01,0.1,1\}$
 (Table~\ref{tab:e5lam}) supports the same reading: intermediate weights give
@@ -1162,8 +1159,9 @@ $\lambda_{\mathrm{dyn}}$ & ID RMSE & OOD RMSE & RMSE(4\,s) \\
 \end{table}
 
 \subsection{E6: Closed loop and the small-gain margin}
-The design uses the empirically calibrated bound $\Lhat+\hat\epsL=3.73$
-(E6 certificate $\Lhat=3.678$, $\hat\epsL=0.056$; all design quantities in
+The design uses the empirically calibrated bound $\Lhat+\hat\epsL=3.73$ from
+the single design run (seed $42$; certificate $\Lhat=3.678$,
+$\hat\epsL=0.056$, all quantities in
 \texttt{results/e6\_design\_provenance.csv}), giving
 $k_c^{\mathrm{safe}}=0.9/(\Lhat+\hat\epsL)=0.241$ and margin $M=0.1>0$.
 Three groups of closed-loop experiments are run on the \emph{true} plant.
@@ -1183,23 +1181,25 @@ $k_c^{\mathrm{safe}}$ (Fig.~\ref{fig:margin}a) shows: (i) for $M>0$ the
 tracking error decreases monotonically ($0.977\to0.909$), as theory permits; (ii) for $M<0$ the condition no
 longer holds and the error becomes non-monotone (it keeps decreasing to
 $0.255$ around $16\times$--$32\times$, then rises to $0.51$ at $128\times$),
-as does the overshoot ($1.41$ at $128\times$). No divergence occurs at any
-gain, which is expected because the hardening nonlinearity and dissipation
-preclude finite-time blow-up under static negative feedback: the margin
-predicts the loss of the \emph{guarantee}, not of stability
+as does the overshoot ($1.41$ at $128\times$). No divergence occurs at any gain, as expected:
+the hardening nonlinearity and dissipation preclude finite-time blow-up under
+static negative feedback, so the margin predicts the loss of the
+\emph{guarantee}, not of stability
 (Remark~\ref{rem:claim}); Fig.~\ref{fig:marginrmse} condenses the sweep into
 the margin--performance plane. (iii) Replacing the calibrated bound by an
-empirical sensitivity alone is unjustified. The design run has
-$S_{\mathrm{emp}}=0.254$, giving $k_c^{\mathrm{opt}}=3.54$ ($14.7\times$ the
-calibrated gain; the point simulated in \texttt{e6\_closedloop.csv} is
-$3.541$); the E3 five-seed mean gives $3.35$ ($13.9\times$) and the
-constrained model's own sensitivity $3.40$, so the risk is not specific to
-the unconstrained baseline.
-Either way the premise is mistaken: such a sensitivity is a sampled
-\emph{lower} bound on the \emph{model's} gain and carries no information
-about the plant's ($\widehat{\mathrm{Lip}}(G)\approx0.52$ at the nominal
-vector). The certificate is conservative but \emph{valid as an upper bound};
-the empirical sensitivity is aggressive and \emph{unjustified}.
+empirical sensitivity alone is unjustified. The design run's unconstrained
+DeepONet has $S_{\mathrm{emp}}=0.254$, giving
+$k_c^{\mathrm{opt}}=0.9/S_{\mathrm{emp}}=3.54$ ($14.7\times$ the calibrated
+gain; the point simulated in \texttt{e6\_closedloop.csv} is $3.541$). The
+same rule applied to the E3 five-seed mean of the unconstrained DeepONet
+($0.269$) gives $3.35$ ($13.9\times$), and to the constrained model's own
+sensitivity ($0.265$) $3.40$, so the risk is not specific to the
+unconstrained baseline.
+Either way the premise is mistaken: a sampled lower bound on the
+\emph{model's} gain carries no information about the plant's
+($\widehat{\mathrm{Lip}}(G)\approx0.52$ at the nominal vector); the
+certificate is conservative but valid, the empirical sensitivity aggressive
+and \emph{unjustified}.
 
 \emph{E6-B (implementation delay).} Real implementations inject a computation
 delay $\tau$ (infinite-dimensional and outside the stated assumptions).
@@ -1236,7 +1236,10 @@ E6-A/B). The residual sensitivity varies most across the box, while the total
 calibrated bound and the design gain are nearly invariant because the
 certified model gain dominates. Every corner satisfies
 $\Lhat+\hat\epsL\ge$ sampled plant gain, and every closed-loop run is stable
-with essentially the same tracking error.}
+with essentially the same tracking error. These errors are not directly
+comparable with the $0.909$ and $0.922$ of Fig.~\ref{fig:margin}: they use
+the five-seed mean design gain ($k_c=0.227$ rather than $0.241$) at a
+$100$\,ms delay.}
 \label{tab:e6c}
 \begin{tabular}{lccccc}
 \toprule
@@ -1297,8 +1300,8 @@ training. A single-seed sweep over
 $\lambda_{\mathrm{lip}}\in\{0.01,0.1,1,10\}$ at $\Ltarget=5$ leaves every
 metric identical to machine precision (ID RMSE $0.0144$, $\Lhat=3.68$). A probe across ten independent runs (the default configuration and
 the $+$Lip ablation of E5, five seeds each) explains why: the surrogate
-$\tilde\L$ stays within $[1.5,3.8]$ at every epoch, so the hinge penalty
-$\max(0,\tilde\L-\Ltarget)^2$ is
+$\tilde L$ stays within $[1.5,3.8]$ at every epoch, so the hinge penalty
+$\max(0,\tilde L-\Ltarget)^2$ is
 \emph{identically zero} and its gradient
 never enters the loss. The invariance is therefore structural: at
 $\Ltarget=5$ the penalty is a safeguard rather than a tuned regularizer.
@@ -1311,10 +1314,16 @@ The meaningful knob is $\Ltarget$. Sweeping it over $\{1.5,2,2.5,3,4,5\}$
 with five seeds each (Table~\ref{tab:e7}, Fig.~\ref{fig:tradeoff}) traces the
 trade-off: the certificate tracks the target down to $\Ltarget=1.5$
 ($\Lhat=1.53\pm0.08$, a $62\%$ compression from $4.00\pm0.24$) while the
-identification error stays essentially flat
-($0.0116\pm0.0010$ vs.\ $0.0121\pm0.0015$); the only unstable point is
-$\Ltarget=2.5$, where the landscape fragments (certificate std $0.36$) and
-the mean error rises to $0.0168\pm0.0065$.
+in-distribution error stays essentially flat ($0.0116\pm0.0010$ vs.\
+$0.0121\pm0.0015$) and the OOD error rises by about $20\%$
+($0.0153\pm0.0015$ vs.\ $0.0127\pm0.0011$). The target is binding only at
+the low end: for $\Ltarget\ge3$ the five-seed mean certificate
+($2.46$, $3.58$, $4.00$) lies below its own target, so those rows
+characterize largely unconstrained training, and only $\Ltarget\le2.5$
+exerts downward pressure. The one point at which identification error
+degrades is $\Ltarget=2.5$ (mean $0.0168\pm0.0065$); its certificate spread
+($0.36$) is not the widest, which belongs to $\Ltarget=4$ ($0.77$), so the
+two diagnostics do not coincide.
 
 E10 verifies the pipeline at such a target: the LC side re-run at
 $\Ltarget=2$ (five seeds) reaches $\Lhat=1.97\pm0.14$ with unchanged
@@ -1322,8 +1331,10 @@ identification ($0.0123\pm0.0015$); the calibrated design
 $k_c=0.419$ still covers the sampled plant gain
 ($0.520$), the margin sweep reproduces the same
 sign--degradation correlation, and conservatism drops to
-$4.1\times$. Transfer at the same target keeps its accuracy
-(Duffing $0.0118\pm0.0008$; pendulum $0.0167\pm0.0082$, one outlier seed).
+$4.1\times$. Transfer at the same target retains its mean accuracy
+(Duffing ID $0.0118\pm0.0008$, OOD $0.0149\pm0.0008$; pendulum ID
+$0.0167\pm0.0082$, OOD $0.0260\pm0.0038$), at the price of a wider seed
+spread than at the default target, one pendulum seed being an outlier.
 
 \begin{table}[t]
 \centering\small
@@ -1422,13 +1433,18 @@ baseline is separated across the whole post-training-horizon region.}
 % ---------------------------------------------------------------------
 \section{Discussion}\label{sec:discussion}
 
-\textbf{Conservatism.} The empirically calibrated plant bound
-$\Lhat+\hat\epsL=3.73$ exceeds the sampled \emph{lower-bound} plant-gain
-estimate ($0.52$ at the box centre, $0.59$ at the worst corner; E6-C) by
-about $6$--$7\times$. A five-seed decomposition localizes the source: the
+\textbf{Conservatism.} Each ratio below compares an upper bound (certificate
+plus residual estimate) with a sampled \emph{lower} bound on the plant gain,
+and therefore overstates the true conservatism. The calibrated bound exceeds
+the sampled plant-gain estimate by about $7\times$: for the single-run design
+of E6-A, $3.73$ against $0.52$ at the box centre, and for the five-seed mean
+of E6-C, $3.96$ against $0.517$ ($6.9\times$ at the worst corner, $4.03$
+against $0.587$). A five-seed decomposition of the certificate batch
+($\Lhat$ averaging $3.91$) localizes the source: the
 branch layer product $\prod_i\sigma(W_i)$ averages $4.12$ and dominates,
 while the trunk constant contributes $C_{\mathrm{T}}\approx0.96$ in the
-Frobenius form. Replacing the
+Frobenius form, their product being $3.96$ against a batch-average bound of
+$3.91$. Replacing the
 Frobenius by the spectral norm --- the tight constant of the
 aggregation step in Theorem~\ref{thm:cert} --- cuts the certificate by a
 measured $15\%$ ($\Lhat=3.91\pm0.32\to3.31\pm0.29$ over five seeds),
@@ -1448,16 +1464,12 @@ before the loop is closed, from the weights plus one offline pass over plant
 data), an interpretable margin whose predicted loss is observable in the
 response, and a rule that transfers across systems (E8) and is insensitive to
 its hyperparameters (E7).
-The price is explicit: the calibrated bound exceeds the sampled plant gain by
-$7.7\times$ at the centre ($3.96$ vs.\ $0.517$) and $6.9\times$ at the worst
-corner ($4.03$ vs.\ $0.587$), and calibrating at the corner rather than the centre costs a further
-$2\%$ (E6-C); both ratios overstate the true conservatism, since the plant
-gain is itself a sampled lower bound, and the ratio falls to $4.1\times$ at a
-binding target (E10). The certificate is therefore best read
-as an offline risk-screening instrument for gain selection rather than a
-performance optimizer: where plant iteration is expensive or unsafe the
-conservative margin is the product, whereas where the smallest tracking error
-is the goal the uncertified design wins.
+The price is explicit: the ratios above are upper estimates, and
+calibrating at the corner rather than the centre costs a further $2\%$
+(E6-C); at a binding target the ratio falls to $4.1\times$ (E10). The certificate is therefore best read
+as an offline risk-screening instrument: where plant iteration is expensive or
+unsafe the conservative margin is the product, whereas where the smallest
+tracking error is the goal the uncertified design wins.
 
 \textbf{Assumption 1.} The residual-Lipschitz assumption is the linchpin
 connecting identification error to stability. It concerns \emph{nature}
@@ -1470,15 +1482,16 @@ bound, so the resulting designs are empirically calibrated rather than
 certified, and the variant $\gamma_s\hat\epsL$ tightens them at a
 proportional gain cost.
 
-\textbf{Generalization.} Under a 512-sample, 5-seed OOD protocol, the
-Lipschitz constraint shows no measurable generalization penalty on the MSD
-system; OOD behavior is an empirical observation only, and the constraint is not
-claimed to be a generalization guarantee.
+\textbf{Generalization.} Under the 512-sample, 5-seed OOD protocol the
+Lipschitz constraint shows no measurable generalization penalty; this is an
+empirical observation, not a guarantee.
 
 \textbf{Limitations.} Simulation-only study; single-output systems; the
-E6-A/B sweeps use one trained network per configuration, whereas E6-C
-replicates the residual estimate and the closed loop across five models and
-all eight box corners; the nominal sweeps are anchored at the box centre, and
+E6-A/B sweeps and the per-corner closed loops of E6-C are each a single
+realization on one trained network ($\Lhat$ itself ranges over
+$3.68$--$4.33$ across the five E6 seeds), whereas the E6-C \emph{residual
+estimate} is replicated over all five models and eight corners; the nominal
+sweeps are anchored at the box centre, and
 the box is covered analytically only by the conservative a priori route; the
 loop delay exposes the margin--performance correlation but is not analyzed
 within the small-gain framework (delay is infinite-dimensional and outside
@@ -1542,15 +1555,16 @@ and the complete raw results are regenerated by the experiment scripts.
 \section*{Code availability}
 The complete implementation---models, training pipeline, certificate
 computation, closed-loop simulation, and all experiment scripts covering
-E1--E9 together with the M3 certificate audit---will be released at
-\url{https://github.com/chenpeng0326/LC-DeepONet}, with a versioned DOI
-snapshot deposited in a public archive. Every quantitative claim is
+E1--E10 together with the M3 certificate audit---is available at
+\url{https://github.com/chenpeng0326/LC-DeepONet}; a versioned DOI
+snapshot will be deposited in a public archive on acceptance. Every quantitative claim is
 regenerable from the released scripts and committed result files
 (\texttt{results/*.csv}); \texttt{README.md} maps each table and figure to
 its generating script and result file, and
-\texttt{results/e6\_design\_provenance.csv} records every scalar behind the
-closed-loop design so that the E6 numbers can be recomputed without
-retraining.
+\texttt{results/e6\_design\_provenance.csv} and
+\texttt{results/e10\_lt2\_design\_provenance.csv} record every scalar behind
+the closed-loop designs, so that the E6 and E10 numbers can be recomputed
+without retraining.
 
 
 
