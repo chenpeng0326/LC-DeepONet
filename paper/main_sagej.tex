@@ -1164,7 +1164,7 @@ the single design run (seed $42$; certificate $\Lhat=3.678$,
 $\hat\epsL=0.056$, all quantities in
 \texttt{results/e6\_design\_provenance.csv}), giving
 $k_c^{\mathrm{safe}}=0.9/(\Lhat+\hat\epsL)=0.241$ and margin $M=0.1>0$.
-Three groups of closed-loop experiments are run on the \emph{true} plant.
+Four groups of closed-loop experiments are run on the \emph{true} plant.
 
 \emph{Scope.} As stated in the Numerical Experiments section, these quantities are
 calibrated at the nominal vector; E6-C below re-estimates them at all eight box
@@ -1181,7 +1181,7 @@ $k_c^{\mathrm{safe}}$ (Fig.~\ref{fig:margin}a) shows: (i) for $M>0$ the
 tracking error decreases monotonically ($0.977\to0.909$), as theory permits; (ii) for $M<0$ the condition no
 longer holds and the error becomes non-monotone (it keeps decreasing to
 $0.255$ around $16\times$--$32\times$, then rises to $0.51$ at $128\times$),
-as does the overshoot ($1.41$ at $128\times$). No divergence occurs at any gain, as expected:
+as does the overshoot ($1.41$ at $128\times$). No divergence occurs at any gain:
 the hardening nonlinearity and dissipation preclude finite-time blow-up under
 static negative feedback, so the margin predicts the loss of the
 \emph{guarantee}, not of stability
@@ -1189,17 +1189,16 @@ static negative feedback, so the margin predicts the loss of the
 the margin--performance plane. (iii) Replacing the calibrated bound by an
 empirical sensitivity alone is unjustified. The design run's unconstrained
 DeepONet has $S_{\mathrm{emp}}=0.254$, giving
-$k_c^{\mathrm{opt}}=0.9/S_{\mathrm{emp}}=3.54$ ($14.7\times$ the calibrated
-gain; the point simulated in \texttt{e6\_closedloop.csv} is $3.541$). The
-same rule applied to the E3 five-seed mean of the unconstrained DeepONet
-($0.269$) gives $3.35$ ($13.9\times$), and to the constrained model's own
-sensitivity ($0.265$) $3.40$, so the risk is not specific to the
-unconstrained baseline.
-Either way the premise is mistaken: a sampled lower bound on the
-\emph{model's} gain carries no information about the plant's
+$k_c^{\mathrm{opt}}=0.9/S_{\mathrm{emp}}=3.541$ ($14.7\times$ the calibrated
+gain); the E3 five-seed mean ($0.269$) and the constrained model's own
+sensitivity ($0.265$) give $3.35$ and $3.40$, so the risk is not specific to
+the unconstrained baseline. Either way the premise is mistaken: a sampled lower
+bound on the \emph{model's} gain carries no information about the plant's
 ($\widehat{\mathrm{Lip}}(G)\approx0.52$ at the nominal vector); the
 certificate is conservative but valid, the empirical sensitivity aggressive
-and \emph{unjustified}.
+and \emph{unjustified}. Judged against the plant gain rather than the model
+sensitivity, the certificate design keeps $M>0$ in all five seeds, the
+optimistic design in none ($M=-0.86\pm0.06$; E6-D).
 
 \emph{E6-B (implementation delay).} Real implementations inject a computation
 delay $\tau$ (infinite-dimensional and outside the stated assumptions).
@@ -1212,22 +1211,27 @@ $2.28$, $4.94$, $7.88$ for $\tau=50,100,200$\,ms
 (Fig.~\ref{fig:margin}c,d). The margin-blessed design thus absorbs
 non-idealities for which the aggressive design has no spare margin.
 
-\emph{E6-C (parameter-box corners).} The calibration above is anchored at
-the box centre, so E6-C re-estimates the residual sensitivity and the sampled
-plant gain at all eight corners with the same five trained models and repeats
-the closed-loop comparison there (Table~\ref{tab:e6c}). The residual estimate
-is what varies most: $\hat\epsL$ rises from $0.039$ at the centre to $0.124$
-at the worst corner, a factor of $3.2$, whereas the sampled plant gain grows
-only from $0.517$ to $0.587$ and the total bound from $3.96$ to at most
-$4.03$, because the certified gain $\Lhat\approx3.9$ dominates the sum.
+\emph{E6-C (parameter-box corners).} E6-C re-estimates the residual sensitivity and the
+sampled plant gain at all eight corners with the same five trained models and
+repeats the closed-loop comparison there (Table~\ref{tab:e6c}). The residual
+estimate varies most: $\hat\epsL$ rises from $0.039$ at the centre to $0.124$
+at the worst corner, a factor of $3.2$, whereas the sampled plant gain and the
+total bound move only from $0.517$ to $0.587$ and from $3.96$ to $4.03$,
+because the certified gain $\Lhat\approx3.9$ dominates the sum.
 Consequently the calibrated bound covers the sampled plant gain at
 \emph{every} corner, and the design gain is nearly insensitive to where in the
 box the calibration is performed: the worst corner gives $k_c=0.222$ against
-$0.227$ at the centre, a $2\%$ reduction. (The two aggregates differ by
-construction --- mean per-seed bound versus mean certificate plus largest
-residual estimate --- and neither replaces the single-seed design of E6-A/B.) All nine parameter points close
-stably with essentially identical tracking error ($0.921$--$0.934$), so the
-design transfers across the box rather than being tuned to one instance.
+$0.227$ at the centre, a $2\%$ reduction. (The two aggregates differ by construction, and E6-D replaces
+the single-seed design of E6-A/B.) All nine parameter points close stably with
+essentially identical tracking error ($0.921$--$0.934$), so the design
+transfers across the box rather than being tuned to one instance.
+
+\emph{E6-D (seed-to-seed reproducibility).} Re-running the whole pipeline on
+five independently trained networks reproduces the picture above:
+$k_c^{\mathrm{safe}}=0.234\pm0.006$, and at every gain multiple the five
+sweeps agree to within a few per cent without a single divergence
+(\texttt{results/e6s\_summary.csv}); the margin survives replication rather
+than depending on one draw.
 
 \begin{table}[t]
 \centering\small
@@ -1433,9 +1437,8 @@ baseline is separated across the whole post-training-horizon region.}
 % ---------------------------------------------------------------------
 \section{Discussion}\label{sec:discussion}
 
-\textbf{Conservatism.} Each ratio below compares an upper bound (certificate
-plus residual estimate) with a sampled \emph{lower} bound on the plant gain,
-and therefore overstates the true conservatism. The calibrated bound exceeds
+\textbf{Conservatism.} Each ratio below divides an upper bound by a sampled \emph{lower} bound on the
+plant gain and therefore overstates the true conservatism. The calibrated bound exceeds
 the sampled plant-gain estimate by about $7\times$: for the single-run design
 of E6-A, $3.73$ against $0.52$ at the box centre, and for the five-seed mean
 of E6-C, $3.96$ against $0.517$ ($6.9\times$ at the worst corner, $4.03$
@@ -1449,8 +1452,7 @@ Frobenius by the spectral norm --- the tight constant of the
 aggregation step in Theorem~\ref{thm:cert} --- cuts the certificate by a
 measured $15\%$ ($\Lhat=3.91\pm0.32\to3.31\pm0.29$ over five seeds),
 bringing the factor to about $6$; the remaining gap is attributable to the
-layer-product bound and to the uniform-in-$u$ worst-case character of the
-trunk constant.
+layer-product bound and the uniform-in-$u$ trunk constant.
 
 \textbf{What the certificate buys, and what it costs.} The margin-blessed
 design is deliberately conservative: the calibrated gain gives a tracking
@@ -1486,11 +1488,9 @@ proportional gain cost.
 Lipschitz constraint shows no measurable generalization penalty; this is an
 empirical observation, not a guarantee.
 
-\textbf{Limitations.} Simulation-only study; single-output systems; the
-E6-A/B sweeps and the per-corner closed loops of E6-C are each a single
-realization on one trained network ($\Lhat$ itself ranges over
-$3.68$--$4.33$ across the five E6 seeds), whereas the E6-C \emph{residual
-estimate} is replicated over all five models and eight corners; the nominal
+\textbf{Limitations.} Simulation-only study; single-output systems; the design
+rule is replicated over five networks (E6-D) but each corner loop of E6-C still
+uses one design gain ($\Lhat$ ranges over $3.68$--$4.33$); the nominal
 sweeps are anchored at the box centre, and
 the box is covered analytically only by the conservative a priori route; the
 loop delay exposes the margin--performance correlation but is not analyzed
@@ -1561,10 +1561,11 @@ snapshot will be deposited in a public archive on acceptance. Every quantitative
 regenerable from the released scripts and committed result files
 (\texttt{results/*.csv}); \texttt{README.md} maps each table and figure to
 its generating script and result file, and
-\texttt{results/e6\_design\_provenance.csv} and
+\texttt{results/e6\_design\_provenance.csv},
+\texttt{results/e6s\_design\_per\_seed.csv} and
 \texttt{results/e10\_lt2\_design\_provenance.csv} record every scalar behind
-the closed-loop designs, so that the E6 and E10 numbers can be recomputed
-without retraining.
+the closed-loop designs (per seed for E6-D), so that the E6 and E10 numbers
+can be recomputed without retraining.
 
 
 

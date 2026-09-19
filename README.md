@@ -66,6 +66,7 @@ LC-DeepONet/
 | E5: ablation {Lip}×{Dyn} + λ_dyn sweep, 5-seed | `run_e5.py` / `run_e5b_multiseed.py` | `e5_ablation.csv`, `e5b_ablation_5seed.csv` |
 | E6-A/B: closed-loop margin sweeps (one-step lag / delay) | `run_e6.py` / `run_e6_ab.py` | `e6_closedloop.csv`, `e6a_delayfree.csv`, `e6b_delay.csv`; design scalars in `e6_design_provenance.csv` |
 | E6-C: parameter-box corner check (8 corners, 5 models) | `run_e6_corners.py` | `e6c_corners.csv`, `e6c_closedloop.csv` |
+| E6-D: seed-to-seed replication of the whole design rule (5 networks × 2 lags × 10 gain multiples) | `run_e6_seeds.py` | `e6s_design_per_seed.csv`, `e6s_closedloop_per_seed.csv`, `e6s_summary.csv` |
 | E7: λ_lip invariance / L_target trade-off / λ_dyn check | `run_e7_lam.py` / `run_e7b_ltarget.py` / `run_e7c_lamdyn.py` | `e7_lam_sensitivity.csv`, `e7b_ltarget_sensitivity.csv`, `e7c_lamdyn.csv` |
 | E8: transfer to Duffing + pendulum | `run_e8_transfer.py` | `e8_transfer.csv` |
 | E9: long-horizon rollout (4 s / 6 s) | `run_e9_longhorizon.py` | `e9_longhorizon.csv`, `e9_rmse_t.csv` |

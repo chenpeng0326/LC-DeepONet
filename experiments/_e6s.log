@@ -1,0 +1,54 @@
+[E6-S] L_G_true (nominal, E6 protocol 512 draws) = 0.5205 | 4096 draws = 0.6245
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_design_per_seed.csv
+  seed=42: L_cert=3.678 eps_L=0.0564 b=3.735 k_safe=0.2410 (M_true=+0.875) | S_emp=0.2542 k_opt=3.5411 (M_true=-0.843)
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_closedloop_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_design_per_seed.csv
+  seed=43: L_cert=3.777 eps_L=0.0308 b=3.808 k_safe=0.2363 (M_true=+0.877) | S_emp=0.2607 k_opt=3.4529 (M_true=-0.797)
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_closedloop_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_design_per_seed.csv
+  seed=44: L_cert=3.942 eps_L=0.0384 b=3.980 k_safe=0.2261 (M_true=+0.882) | S_emp=0.2385 k_opt=3.7733 (M_true=-0.964)
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_closedloop_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_design_per_seed.csv
+  seed=45: L_cert=3.819 eps_L=0.0335 b=3.853 k_safe=0.2336 (M_true=+0.878) | S_emp=0.2519 k_opt=3.5726 (M_true=-0.860)
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_closedloop_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_design_per_seed.csv
+  seed=46: L_cert=3.854 eps_L=0.0373 b=3.891 k_safe=0.2313 (M_true=+0.880) | S_emp=0.2569 k_opt=3.5031 (M_true=-0.823)
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_closedloop_per_seed.csv
+[saved] C:\Users\cp\WorkBuddy\2026-09-17-09-33-34\LC-DeepONet\results\e6s_summary.csv
+
+[E6-S design spread]
+        L_cert  plant_bound  k_c_safe  k_c_opt_DeepONet  M_true_at_k_safe  M_true_at_k_opt  M_true_big_at_k_safe  M_true_big_at_k_opt
+mean  3.814183     3.853442  0.233663          3.568575          0.878379        -0.857429              0.854081            -1.228522
+std   0.097119     0.091744  0.005553          0.122838          0.002890         0.063937              0.003468             0.076710
+min   3.678396     3.734775  0.226119          3.452879          0.874572        -0.963984              0.849513            -1.356365
+max   3.941810     3.980200  0.240978          3.773292          0.882306        -0.797210              0.858792            -1.156272
+
+[E6-S] optimistic design violates the small-gain condition at the true plant gain in 5/5 seeds (certificate design: 5/5 satisfy it)
+
+[E6-S] mean track_err_L2 over 5 seeds, delay=1 step(s)
+  mult  LC-certificate
+  0.25        0.978023
+  0.50        0.955934
+  1.00        0.912924
+  2.00        0.831575
+  4.00        0.687355
+  8.00        0.468849
+ 16.00        0.260724
+ 32.00        0.255554
+ 64.00        0.470648
+128.00        0.515384
+
+[E6-S] mean track_err_L2 over 5 seeds, delay=100 step(s)
+  mult  LC-certificate
+  0.25        0.981329
+  0.50        0.962383
+  1.00        0.925179
+  2.00        0.853626
+  4.00        0.722738
+  8.00        0.516160
+ 16.00        0.357821
+ 32.00        0.496709
+ 64.00        1.076308
+128.00        2.846988
+
+[E6-S] done.

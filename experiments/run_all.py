@@ -13,8 +13,8 @@ import time
 scripts = [
     # --- 单跑基线（E1-E6）---
     "run_e1.py", "run_e2.py", "run_e3.py", "run_e4.py", "run_e5.py", "run_e6.py",
-    # --- 闭环变体：A/B（延迟扫描）与 C（参数箱角点）---
-    "run_e6_ab.py", "run_e6_corners.py",
+    # --- 闭环变体：A/B（延迟扫描）、C（参数箱角点）、D（设计规则五 seed 复现）---
+    "run_e6_ab.py", "run_e6_corners.py", "run_e6_seeds.py",
     # --- 5-seed 加固 ---
     "run_e3b_multiseed.py", "run_e4b_multiseed.py", "run_e5b_multiseed.py",
     # --- E7：证书-精度权衡三组扫描 ---
@@ -23,6 +23,8 @@ scripts = [
     "run_e8_transfer.py", "run_e9_longhorizon.py",
     # --- M3：证书紧度审计（Frobenius vs 谱范数）---
     "run_m3_ctnorm.py",
+    # --- E10：绑定目标（L_target=2）下的 MSD 辨识 + 闭环 + 迁移 ---
+    "run_e10_ltarget2.py",
 ]
 flag = ["--smoke"] if "--smoke" in sys.argv else []
 for s in scripts:
